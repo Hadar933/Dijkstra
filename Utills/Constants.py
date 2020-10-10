@@ -17,4 +17,4 @@ COLS = WIDTH // BLOCK_SIZE
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (160, 160, 160)
-RED = 'Red'
+RED = 'Green'
