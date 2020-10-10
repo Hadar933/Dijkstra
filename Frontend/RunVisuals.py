@@ -7,8 +7,8 @@ MID_MOUSE_CLICK = 1
 RIGHT_MOUSE_CLICK = 2
 
 # screen resolution
-WIDTH = 1000
-HEIGHT = 700
+WIDTH = 500
+HEIGHT = 350
 BLOCK_SIZE = 10
 
 # colors (R,B,G)
@@ -18,9 +18,9 @@ WHITE = (255, 255, 255)
 
 class RunVisuals:
     def __init__(self, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
-        self.win = pygame.display.set_mode((screen_width, screen_height))
+        self.window = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption("Dijkstra")
-        self.win.fill(WHITE)
+        self.window.fill(WHITE)
         self.blocks = []
         self.height = screen_height
         self.width = screen_width
@@ -29,18 +29,20 @@ class RunVisuals:
         self.cols = self.width // BLOCK_SIZE
 
     def draw_grid(self):
-        for row in self.rows:
-            for col in self.cols:
-                pygame.draw.line()
+        for x in range(self.width):
+            for y in range(self.height):
+                rect = pygame.Rect(x * BLOCK_SIZE, y * BLOCK_SIZE,
+                                   BLOCK_SIZE, BLOCK_SIZE)
+                pygame.draw.rect(self.window, BLACK, rect,1)
 
     def draw_all(self):
-        #self.draw_grid()
         for b in self.blocks:
-            b.draw_block(self.win, BLACK)
+            b.draw_block(self.window, BLACK)
         pygame.display.update()
 
     def main(self):
         run = True
+        self.draw_grid()
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
