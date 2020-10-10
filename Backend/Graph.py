@@ -1,5 +1,6 @@
 from Dijkstra.Backend.Node import Node
-INFINITY = float('inf')
+from Dijkstra.Utills.Constants import INFINITY
+
 
 def set_connections(connections):
     """

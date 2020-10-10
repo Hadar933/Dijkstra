@@ -1,10 +1,11 @@
-INFINITY = float('inf')
+from Dijkstra.Utills.Constants import INFINITY
 
 
 class Node:
     """
     this class represents a node that has some relevant data members
     """
+
     def __init__(self, name, dist_from_source=INFINITY):
         self.name = name
         self.dist_from_source = dist_from_source

@@ -1,3 +1,6 @@
+# represents infinity:
+INFINITY = float('inf')
+
 # MOUSE CLICKS
 LEFT_MOUSE_CLICK = 0
 MID_MOUSE_CLICK = 1
