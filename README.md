@@ -1,4 +1,4 @@
-# DijkstraRepresentation
+# Dijkstra
 
 ### Description:
 
