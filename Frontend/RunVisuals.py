@@ -7,6 +7,7 @@ RIGHT_MOUSE_CLICK = 2
 WIDTH = HEIGHT = 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dijkstra")
+BLACK = (0, 0, 0)
 
 
 class RunVisuals:
@@ -20,20 +21,22 @@ class RunVisuals:
     def draw_all(self):
         self.draw_grid()
         for b in self.blocks:
-            b.draw_block()
+            b.draw_block(self.win, BLACK)
         pygame.display.update()
 
     def main(self):
-        while True:
+        run = True
+        while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    run = False
             self.draw_all()
             if pygame.mouse.get_pressed()[RIGHT_MOUSE_CLICK]:
                 pos = pygame.mouse.get_pos()
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT():
-                    break
+                # TODO: add block to block list in the position of the mouse click
 
 
 if __name__ == "__main__":
     blocks = [Block(i, i) for i in range(20)]
-    rv = RunVisuals(WIN,blocks)
+    rv = RunVisuals(WIN, blocks)
+    rv.main()
