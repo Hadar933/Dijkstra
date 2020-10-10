@@ -15,3 +15,4 @@ HEIGHT = 350
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (160, 160, 160)
+RED = 'Red'
