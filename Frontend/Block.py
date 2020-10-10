@@ -4,7 +4,7 @@ from Dijkstra.Utills.Constants import BLACK, BLOCK_SIZE
 
 class Block:
     """
-    a class that represents a block in a grid
+    a class that represents a block in a grid (sized BLOCK_SIZE*BLOCK_SIZE)
     """
 
     def __init__(self, x, y, size=BLOCK_SIZE, color=BLACK):

@@ -35,9 +35,14 @@ class RunVisuals:
                 if event.type == pygame.QUIT:
                     run = False
             self.draw_all()
-            if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
-                x, y = pygame.mouse.get_pos()
-                self.blocks.append(Block(x, y))
+
+    def add_by_click(self):
+        """
+        add blocks to the game when left mouse is clicked
+        """
+        if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
+            x, y = pygame.mouse.get_pos()
+            self.blocks.append(Block(x, y))
 
 
 if __name__ == "__main__":

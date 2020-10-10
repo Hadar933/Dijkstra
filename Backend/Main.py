@@ -58,7 +58,7 @@ def generate_edge_from_screen():
             # 2 edge rows or 2 edge columns without the 4 edges:
             set_edge_rows_cols(col, edges_lst, row, weight)
             # else - general case:
-            if 0 < row < ROWS-1 and 0 < col < COLS-1:
+            if 0 < row < ROWS - 1 and 0 < col < COLS - 1:
                 edges_lst.append((node_name(row, col), node_name(row, col - 1), weight))
                 edges_lst.append((node_name(row, col), node_name(row, col + 1), weight))
                 edges_lst.append((node_name(row, col), node_name(row - 1, col), weight))
@@ -74,22 +74,22 @@ def set_edge_rows_cols(col, edges_lst, row, weight):
     :param row: current row
     :param weight: =1 by default
     """
-    if row == 0 and (col != 0 and col != COLS-1):  # first row but not the edges
+    if row == 0 and (col != 0 and col != COLS - 1):  # first row but not the edges
         edges_lst.append((node_name(0, col), node_name(0, col - 1), weight))
         edges_lst.append((node_name(0, col), node_name(1, col), weight))
         edges_lst.append((node_name(0, col), node_name(0, col + 1), weight))
-    elif row == ROWS-1 and (col != 0 and col != COLS-1):  # last row but not the edges
-        edges_lst.append((node_name(ROWS-1, col), node_name(ROWS-1, col - 1), weight))
-        edges_lst.append((node_name(ROWS-1, col), node_name(ROWS - 2, col), weight))
-        edges_lst.append((node_name(ROWS-1, col), node_name(ROWS-1, col + 1), weight))
-    elif col == 0 and (row != 0 and row != ROWS-1):  # first col but not edges
+    elif row == ROWS - 1 and (col != 0 and col != COLS - 1):  # last row but not the edges
+        edges_lst.append((node_name(ROWS - 1, col), node_name(ROWS - 1, col - 1), weight))
+        edges_lst.append((node_name(ROWS - 1, col), node_name(ROWS - 2, col), weight))
+        edges_lst.append((node_name(ROWS - 1, col), node_name(ROWS - 1, col + 1), weight))
+    elif col == 0 and (row != 0 and row != ROWS - 1):  # first col but not edges
         edges_lst.append((node_name(row, 0), node_name(row - 1, 0), weight))
         edges_lst.append((node_name(row, 0), node_name(row, 1), weight))
         edges_lst.append((node_name(row, 0), node_name(row + 1, 0), weight))
-    elif col == COLS-1 and (row != 0 and row != ROWS-1):  # last col but not edges
-        edges_lst.append((node_name(row, COLS-1), node_name(row - 1, COLS-1), weight))
-        edges_lst.append((node_name(row, COLS-1), node_name(row, COLS - 2), weight))
-        edges_lst.append((node_name(row, COLS-1), node_name(row + 1, COLS-1), weight))
+    elif col == COLS - 1 and (row != 0 and row != ROWS - 1):  # last col but not edges
+        edges_lst.append((node_name(row, COLS - 1), node_name(row - 1, COLS - 1), weight))
+        edges_lst.append((node_name(row, COLS - 1), node_name(row, COLS - 2), weight))
+        edges_lst.append((node_name(row, COLS - 1), node_name(row + 1, COLS - 1), weight))
 
 
 def set_four_edges(col, row, edges_lst, weight):
@@ -103,15 +103,15 @@ def set_four_edges(col, row, edges_lst, weight):
     if row == 0 and col == 0:  # node (0,0)
         edges_lst.append((node_name(0, 0), node_name(1, 0), weight))
         edges_lst.append((node_name(0, 0), node_name(0, 1), weight))
-    elif row == 0 and col == COLS-1:  # node (0,COLS-1)
-        edges_lst.append((node_name(0, COLS-1), node_name(0, ROWS-2), weight))
-        edges_lst.append((node_name(0, COLS-1), node_name(1, ROWS-1), weight))
-    elif row == ROWS-1 and col == 0:  # node (ROWS-1,0)
-        edges_lst.append((node_name(ROWS-1, 0), node_name(ROWS-2, 0), weight))
-        edges_lst.append((node_name(ROWS-1, 0), node_name(ROWS-1, 1), weight))
-    elif row == ROWS-1 and col == COLS-1:  # node (ROWS-1,COLS-1)
-        edges_lst.append((node_name(ROWS-1,COLS-1), node_name(ROWS-2, COLS-1), weight))
-        edges_lst.append((node_name(ROWS-1,COLS-1), node_name(ROWS-1, COLS-2), weight))
+    elif row == 0 and col == COLS - 1:  # node (0,COLS-1)
+        edges_lst.append((node_name(0, COLS - 1), node_name(0, ROWS - 2), weight))
+        edges_lst.append((node_name(0, COLS - 1), node_name(1, ROWS - 1), weight))
+    elif row == ROWS - 1 and col == 0:  # node (ROWS-1,0)
+        edges_lst.append((node_name(ROWS - 1, 0), node_name(ROWS - 2, 0), weight))
+        edges_lst.append((node_name(ROWS - 1, 0), node_name(ROWS - 1, 1), weight))
+    elif row == ROWS - 1 and col == COLS - 1:  # node (ROWS-1,COLS-1)
+        edges_lst.append((node_name(ROWS - 1, COLS - 1), node_name(ROWS - 2, COLS - 1), weight))
+        edges_lst.append((node_name(ROWS - 1, COLS - 1), node_name(ROWS - 1, COLS - 2), weight))
 
 
 if __name__ == "__main__":
@@ -125,7 +125,6 @@ if __name__ == "__main__":
     print(edges)
     graph = Graph(edges)
     source_node = graph.get_vertexes()["(0,0)"]
-    #visualize_graph(edges)
+    # visualize_graph(edges)
     dijkstra(graph, source_node)
     print_min_distances(graph, source_node.name)
-
