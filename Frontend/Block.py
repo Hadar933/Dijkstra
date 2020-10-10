@@ -1,7 +1,5 @@
 import pygame
-
-BLOCK_SIZE = 10
-BLACK = (0, 0, 0)
+from Dijkstra.Utills.Constants import BLACK, BLOCK_SIZE
 
 
 class Block:

@@ -1,20 +1,5 @@
-import pygame
 from Dijkstra.Frontend.Block import *
-
-# mouse clicks
-LEFT_MOUSE_CLICK = 0
-MID_MOUSE_CLICK = 1
-RIGHT_MOUSE_CLICK = 2
-
-# screen resolution
-WIDTH = 500
-HEIGHT = 350
-BLOCK_SIZE = 10
-
-# colors (R,B,G)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREY = (160, 160, 160)
+from Dijkstra.Utills.Constants import LEFT_MOUSE_CLICK, WIDTH, HEIGHT, BLACK, WHITE, GREY
 
 
 class RunVisuals:
