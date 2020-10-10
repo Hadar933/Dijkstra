@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from Dijkstra.Backend.Algorithm import dijkstra
 from Dijkstra.Backend.Graph import Graph
+from Dijkstra.Utills.Constants import *
 
 
 def print_min_distances(graph, source_name):
@@ -33,6 +34,17 @@ def visualize_graph(edges_lst):
     labels = nx.get_edge_attributes(G, 'weight')
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     plt.show()
+
+
+def generate_edge_from_screen():
+    """
+    this method generates a list of nodes, where each node corresponds to a pixel on the screen.
+    :return:
+    """
+    nodes_lst = []
+    for row in ROWS:
+        for col in COLS:
+
 
 
 if __name__ == "__main__":
