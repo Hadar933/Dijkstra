@@ -12,10 +12,10 @@ WHITE = (255, 255, 255)
 
 
 class RunVisuals:
-    def __init__(self, window, blocks):
+    def __init__(self, window):
         self.win = window
         self.win.fill(WHITE)
-        self.blocks = blocks
+        self.blocks = []
 
     def draw_grid(self):
         pass
@@ -39,6 +39,5 @@ class RunVisuals:
 
 
 if __name__ == "__main__":
-    blocks = [Block(i, i) for i in range(20)]
-    rv = RunVisuals(WIN, blocks)
+    rv = RunVisuals(WIN)
     rv.main()
