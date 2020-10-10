@@ -1,6 +1,7 @@
 import pygame
 
 BLOCK_SIZE = 10
+BLACK = (0, 0, 0)
 
 
 class Block:
@@ -8,15 +9,20 @@ class Block:
     a class that represents a block in a grid
     """
 
-    def __init__(self, x, y, size=BLOCK_SIZE):
+    def __init__(self, x, y, size=BLOCK_SIZE, color=BLACK):
+        self.row = x // BLOCK_SIZE * BLOCK_SIZE  # ROUNDING SO WE WILL ONLY DRAW INSIDE GRID
+        self.col = y // BLOCK_SIZE * BLOCK_SIZE
         self.x = x
         self.y = y
+        self.color = color
         self.size = size
 
     def draw_block(self, window, color):
         """
         draws the block with the given colour
+        :param window:
         :param color: a colour, represented with three digits (x1,x2,x3), where 0<=x_i<=255
         :return:
         """
-        pygame.draw.rect(window, color, (self.x, self.y, self.size, self.size))
+        rect = (self.row, self.col, self.size, self.size)
+        pygame.draw.rect(window, color, rect)
