@@ -8,11 +8,13 @@ WIDTH = HEIGHT = 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dijkstra")
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 
 class RunVisuals:
     def __init__(self, window, blocks):
         self.win = window
+        self.win.fill(WHITE)
         self.blocks = blocks
 
     def draw_grid(self):
