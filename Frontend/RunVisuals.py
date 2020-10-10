@@ -33,9 +33,9 @@ class RunVisuals:
                 if event.type == pygame.QUIT:
                     run = False
             self.draw_all()
-            if pygame.mouse.get_pressed()[RIGHT_MOUSE_CLICK]:
-                pos = pygame.mouse.get_pos()
-                # TODO: add block to block list in the position of the mouse click
+            if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
+                x,y = pygame.mouse.get_pos()
+                self.blocks.append(Block(x,y))
 
 
 if __name__ == "__main__":
