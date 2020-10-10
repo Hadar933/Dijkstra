@@ -14,6 +14,7 @@ BLOCK_SIZE = 10
 # colors (R,B,G)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+GREY = (160, 160, 160)
 
 
 class RunVisuals:
@@ -33,7 +34,8 @@ class RunVisuals:
             for y in range(self.height):
                 rect = pygame.Rect(x * BLOCK_SIZE, y * BLOCK_SIZE,
                                    BLOCK_SIZE, BLOCK_SIZE)
-                pygame.draw.rect(self.window, BLACK, rect,1)
+                line_width = 1
+                pygame.draw.rect(self.window, GREY, rect, line_width)
 
     def draw_all(self):
         for b in self.blocks:
