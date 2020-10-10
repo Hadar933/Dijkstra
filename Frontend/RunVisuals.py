@@ -1,5 +1,12 @@
 import pygame
-import Dijkstra.Frontend.Block
+from Dijkstra.Frontend.Block import *
+
+LEFT_MOUSE_CLICK = 0
+MID_MOUSE_CLICK = 1
+RIGHT_MOUSE_CLICK = 2
+WIDTH = HEIGHT = 800
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Dijkstra")
 
 
 class RunVisuals:
@@ -18,12 +25,15 @@ class RunVisuals:
 
     def main(self):
         while True:
+            self.draw_all()
+            if pygame.mouse.get_pressed()[RIGHT_MOUSE_CLICK]:
+                pos = pygame.mouse.get_pos()
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT():
                     break
-            left_mouse = 0
-            mid_mouse = 1
-            right_mouse = 2
-            if pygame.mouse.get_pressed()[left_mouse]:
-                pos = pygame.mouse.get_pos()
+
+
 if __name__ == "__main__":
+    blocks = [Block(i, i) for i in range(20)]
+    rv = RunVisuals(WIN,blocks)
