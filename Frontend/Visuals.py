@@ -1,4 +1,5 @@
 from Dijkstra.Backend.Algorithm import dijkstra
+from Dijkstra.Backend.ProgramLogic import get_node_name
 from Dijkstra.Frontend.Block import *
 from Dijkstra.Utills.Constants import *
 
@@ -68,7 +69,7 @@ class Visuals:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
                     if self.run_button.collidepoint(x, y):
-                        dijkstra(self.graph, self.source_node, self.window,self.dest_node)
+                        dijkstra(self.graph, self.source_node, self.window, self.dest_node)
 
             self.draw_nodes("bad")
             self.draw_nodes("good")
@@ -82,3 +83,6 @@ class Visuals:
         if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
             x, y = pygame.mouse.get_pos()
             self.bad_nodes.append(Block(x, y))
+
+
+

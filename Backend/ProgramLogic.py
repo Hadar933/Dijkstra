@@ -1,7 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import pygame
+
 from Dijkstra.Frontend.Block import Block
 from Dijkstra.Utills.Constants import *
+import time
 
 
 def print_min_distances(graph, source_name):
@@ -16,7 +19,7 @@ def print_min_distances(graph, source_name):
         print("Node=", node.name, ", dist from source =", node.dist_from_source)
 
 
-def print_path(window,source,dest):
+def print_path(window, source, dest):
     path = [source]
     curr_node = dest
     while curr_node.prev:
@@ -24,8 +27,7 @@ def print_path(window,source,dest):
         curr_node = curr_node.prev
     for node in path:
         block = get_block_from_node(node)
-        block.draw_block(window,RED)
-
+        block.draw_block(window, RED)
 
 
 def visualize_graph(edges_lst):
@@ -46,7 +48,7 @@ def visualize_graph(edges_lst):
     plt.show()
 
 
-def node_name(row, col):
+def get_node_name(row, col):
     """
     a helper method that returns the name of a node positioned in row,col (as given by get_nodes_names() )
     """
@@ -69,10 +71,10 @@ def generate_edge_from_screen():
             set_edge_rows_cols(col, edges_lst, row, weight)
             # else - general case:
             if 0 < row < ROWS - 1 and 0 < col < COLS - 1:
-                edges_lst.append((node_name(row, col), node_name(row, col - 1), weight))
-                edges_lst.append((node_name(row, col), node_name(row, col + 1), weight))
-                edges_lst.append((node_name(row, col), node_name(row - 1, col), weight))
-                edges_lst.append((node_name(row, col), node_name(row + 1, col), weight))
+                edges_lst.append((get_node_name(row, col), get_node_name(row, col - 1), weight))
+                edges_lst.append((get_node_name(row, col), get_node_name(row, col + 1), weight))
+                edges_lst.append((get_node_name(row, col), get_node_name(row - 1, col), weight))
+                edges_lst.append((get_node_name(row, col), get_node_name(row + 1, col), weight))
     return edges_lst
 
 
@@ -85,21 +87,21 @@ def set_edge_rows_cols(col, edges_lst, row, weight):
     :param weight: =1 by default
     """
     if row == 0 and (col != 0 and col != COLS - 1):  # first row but not the edges
-        edges_lst.append((node_name(0, col), node_name(0, col - 1), weight))
-        edges_lst.append((node_name(0, col), node_name(1, col), weight))
-        edges_lst.append((node_name(0, col), node_name(0, col + 1), weight))
+        edges_lst.append((get_node_name(0, col), get_node_name(0, col - 1), weight))
+        edges_lst.append((get_node_name(0, col), get_node_name(1, col), weight))
+        edges_lst.append((get_node_name(0, col), get_node_name(0, col + 1), weight))
     elif row == ROWS - 1 and (col != 0 and col != COLS - 1):  # last row but not the edges
-        edges_lst.append((node_name(ROWS - 1, col), node_name(ROWS - 1, col - 1), weight))
-        edges_lst.append((node_name(ROWS - 1, col), node_name(ROWS - 2, col), weight))
-        edges_lst.append((node_name(ROWS - 1, col), node_name(ROWS - 1, col + 1), weight))
+        edges_lst.append((get_node_name(ROWS - 1, col), get_node_name(ROWS - 1, col - 1), weight))
+        edges_lst.append((get_node_name(ROWS - 1, col), get_node_name(ROWS - 2, col), weight))
+        edges_lst.append((get_node_name(ROWS - 1, col), get_node_name(ROWS - 1, col + 1), weight))
     elif col == 0 and (row != 0 and row != ROWS - 1):  # first col but not edges
-        edges_lst.append((node_name(row, 0), node_name(row - 1, 0), weight))
-        edges_lst.append((node_name(row, 0), node_name(row, 1), weight))
-        edges_lst.append((node_name(row, 0), node_name(row + 1, 0), weight))
+        edges_lst.append((get_node_name(row, 0), get_node_name(row - 1, 0), weight))
+        edges_lst.append((get_node_name(row, 0), get_node_name(row, 1), weight))
+        edges_lst.append((get_node_name(row, 0), get_node_name(row + 1, 0), weight))
     elif col == COLS - 1 and (row != 0 and row != ROWS - 1):  # last col but not edges
-        edges_lst.append((node_name(row, COLS - 1), node_name(row - 1, COLS - 1), weight))
-        edges_lst.append((node_name(row, COLS - 1), node_name(row, COLS - 2), weight))
-        edges_lst.append((node_name(row, COLS - 1), node_name(row + 1, COLS - 1), weight))
+        edges_lst.append((get_node_name(row, COLS - 1), get_node_name(row - 1, COLS - 1), weight))
+        edges_lst.append((get_node_name(row, COLS - 1), get_node_name(row, COLS - 2), weight))
+        edges_lst.append((get_node_name(row, COLS - 1), get_node_name(row + 1, COLS - 1), weight))
 
 
 def set_four_edges(col, row, edges_lst, weight):
@@ -111,17 +113,17 @@ def set_four_edges(col, row, edges_lst, weight):
     :param weight: =1 by default
     """
     if row == 0 and col == 0:  # node (0,0)
-        edges_lst.append((node_name(0, 0), node_name(1, 0), weight))
-        edges_lst.append((node_name(0, 0), node_name(0, 1), weight))
+        edges_lst.append((get_node_name(0, 0), get_node_name(1, 0), weight))
+        edges_lst.append((get_node_name(0, 0), get_node_name(0, 1), weight))
     elif row == 0 and col == COLS - 1:  # node (0,COLS-1)
-        edges_lst.append((node_name(0, COLS - 1), node_name(0, COLS - 2), weight))
-        edges_lst.append((node_name(0, COLS - 1), node_name(1, COLS - 1), weight))
+        edges_lst.append((get_node_name(0, COLS - 1), get_node_name(0, COLS - 2), weight))
+        edges_lst.append((get_node_name(0, COLS - 1), get_node_name(1, COLS - 1), weight))
     elif row == ROWS - 1 and col == 0:  # node (ROWS-1,0)
-        edges_lst.append((node_name(ROWS - 1, 0), node_name(ROWS - 2, 0), weight))
-        edges_lst.append((node_name(ROWS - 1, 0), node_name(ROWS - 1, 1), weight))
+        edges_lst.append((get_node_name(ROWS - 1, 0), get_node_name(ROWS - 2, 0), weight))
+        edges_lst.append((get_node_name(ROWS - 1, 0), get_node_name(ROWS - 1, 1), weight))
     elif row == ROWS - 1 and col == COLS - 1:  # node (ROWS-1,COLS-1)
-        edges_lst.append((node_name(ROWS - 1, COLS - 1), node_name(ROWS - 2, COLS - 1), weight))
-        edges_lst.append((node_name(ROWS - 1, COLS - 1), node_name(ROWS - 1, COLS - 2), weight))
+        edges_lst.append((get_node_name(ROWS - 1, COLS - 1), get_node_name(ROWS - 2, COLS - 1), weight))
+        edges_lst.append((get_node_name(ROWS - 1, COLS - 1), get_node_name(ROWS - 1, COLS - 2), weight))
 
 
 def get_block_from_node(node):
@@ -132,10 +134,3 @@ def get_block_from_node(node):
     x = int(coords[0][1]) * BLOCK_SIZE
     y = int(coords[1][0]) * BLOCK_SIZE
     return Block(x, y)
-
-# edges = [("A", "B", 1), ("A", "C", 1),
-#          ("B", "A", 1), ("B", "C", 2), ("B", "D", 3), ("B", "E", 4),
-#          ("C", "A", 1), ("C", "B", 2), ("C", "D", 1),
-#          ("D", "C", 1), ("D", "B", 3), ("D", "E", 2), ("D", "F", 2),
-#          ("E", "B", 4), ("E", "D", 2), ("E", "F", 1),
-#          ("F", "E", 1), ("F", "D", 2)]

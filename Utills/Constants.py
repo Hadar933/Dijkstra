@@ -1,6 +1,8 @@
 # represents infinity:
 INFINITY = float('inf')
 
+#TIME:
+TIME_DELAY = 500 # milliseconds
 # FONT:
 FONT = 'Ariel'
 FONT_SIZE = 25
