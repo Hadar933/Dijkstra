@@ -3,6 +3,7 @@ Project algorithm based on a min-heap
 @see: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/ (pseudo)
 """
 import heapq
+from Dijkstra.Backend.ProgramLogic import get_block_from_node, RED
 
 
 def build_min_heap(graph):
@@ -10,15 +11,16 @@ def build_min_heap(graph):
     initializes a min-heap with all vertexes from the graph
     :param graph: a dictionary that represents a graph
     """
-    Q = []  # python min-heap
+    Q = []  # python min-heap can be represented in an array
     for v in graph.get_vertexes().values():
         heapq.heappush(Q, v)
     return Q
 
 
-def dijkstra(graph, source):
+def dijkstra(graph, source, window):
     """
     dijkstra algorithm
+    :param window: pygame window, on which we draw the path
     :param graph: a representation of a graph (set)
     :param source: a node to start from
     """
@@ -34,3 +36,7 @@ def dijkstra(graph, source):
             if v_dist > u_dist + weight_u_v:
                 v.set_dist_from_source(u_dist + weight_u_v)
                 heapq.heappush(Q, v)  # O(logV)
+
+                # drawing:
+                block = get_block_from_node(v)
+                block.draw_block(window, RED)
