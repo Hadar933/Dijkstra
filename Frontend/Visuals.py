@@ -5,9 +5,10 @@ from Dijkstra.Utills.Constants import *
 
 class Visuals:
 
-    def __init__(self, graph, source_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
+    def __init__(self, graph, source_node, dest_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
         self.graph = graph
 
+        self.dest_node = dest_node
         self.source_node = source_node
         self.good_nodes = []  # all the possible pixels that are reachable
         self.bad_nodes = []  # the pixels that we cannot use (generated from mouse click)
@@ -58,15 +59,16 @@ class Visuals:
         """
         run = True
         self.draw_grid()
+        pygame.draw.rect(self.window, GREY, self.run_button)
+
         while run:
-            pygame.draw.rect(self.window, GREY, self.run_button)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
                     if self.run_button.collidepoint(x, y):
-                        dijkstra(self.graph, self.source_node, self.window)
+                        dijkstra(self.graph, self.source_node, self.window,self.dest_node)
 
             self.draw_nodes("bad")
             self.draw_nodes("good")
@@ -80,5 +82,3 @@ class Visuals:
         if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
             x, y = pygame.mouse.get_pos()
             self.bad_nodes.append(Block(x, y))
-
-

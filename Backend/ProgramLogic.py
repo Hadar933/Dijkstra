@@ -1,7 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-
-
 from Dijkstra.Frontend.Block import Block
 from Dijkstra.Utills.Constants import *
 
@@ -16,6 +14,18 @@ def print_min_distances(graph, source_name):
     print("Source Node is: ", source_name)
     for node in graph.get_vertexes().values():
         print("Node=", node.name, ", dist from source =", node.dist_from_source)
+
+
+def print_path(window,source,dest):
+    path = [source]
+    curr_node = dest
+    while curr_node.prev:
+        path.append(curr_node)
+        curr_node = curr_node.prev
+    for node in path:
+        block = get_block_from_node(node)
+        block.draw_block(window,RED)
+
 
 
 def visualize_graph(edges_lst):
@@ -118,9 +128,9 @@ def get_block_from_node(node):
     """
     generates an instance of a Block from a given node
     """
-    coords = node.name.split(",") # name format is '(x,y)'
-    x = int(coords[0][1])*BLOCK_SIZE
-    y = int(coords[1][0])*BLOCK_SIZE
+    coords = node.name.split(",")  # name format is '(x,y)'
+    x = int(coords[0][1]) * BLOCK_SIZE
+    y = int(coords[1][0]) * BLOCK_SIZE
     return Block(x, y)
 
 # edges = [("A", "B", 1), ("A", "C", 1),

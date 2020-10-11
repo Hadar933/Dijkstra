@@ -9,6 +9,10 @@ class Node:
     def __init__(self, name, dist_from_source=INFINITY):
         self.name = name
         self.dist_from_source = dist_from_source
+        self.prev = None
+
+    def set_prev(self, prev):
+        self.prev = prev
 
     def set_dist_from_source(self, dist):
         self.dist_from_source = dist

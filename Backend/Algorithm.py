@@ -3,7 +3,7 @@ Project algorithm based on a min-heap
 @see: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/ (pseudo)
 """
 import heapq
-from Dijkstra.Backend.ProgramLogic import get_block_from_node, RED, print_min_distances
+from Dijkstra.Backend.ProgramLogic import get_block_from_node, RED, print_min_distances, ORANGE, print_path
 
 
 def build_min_heap(graph):
@@ -17,9 +17,10 @@ def build_min_heap(graph):
     return Q
 
 
-def dijkstra(graph, source, window):
+def dijkstra(graph, source, window, dest):
     """
     dijkstra algorithm
+    :param dest: destination node
     :param window: pygame window, on which we draw the path
     :param graph: a representation of a graph (set)
     :param source: a node to start from
@@ -28,6 +29,8 @@ def dijkstra(graph, source, window):
     Q = build_min_heap(graph)  # O(V)
     while Q:  # O(V)
         u = heapq.heappop(Q)  # pops the min val based on dist from source (get value and remove from heap) O(logV)
+        if u == dest:
+            break
         neighbors_of_u = graph.get_neighbors()[u.name]
         for v in neighbors_of_u:  # O(E)
             weight_u_v = graph.get_edge_weight(u.name, v.name)
@@ -35,8 +38,7 @@ def dijkstra(graph, source, window):
             u_dist = u.dist_from_source
             if v_dist > u_dist + weight_u_v:
                 v.set_dist_from_source(u_dist + weight_u_v)
+                v.set_prev(u)
                 heapq.heappush(Q, v)  # O(logV)
-                # drawing:
-                block = get_block_from_node(u)
-                block.draw_block(window, RED)
-    print_min_distances(graph, source)
+
+    print_path(window,source,dest)
