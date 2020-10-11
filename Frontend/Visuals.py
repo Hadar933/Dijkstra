@@ -24,6 +24,8 @@ class Visuals:
         self.rows = self.height // BLOCK_SIZE
         self.cols = self.width // BLOCK_SIZE
 
+        self.run_button = pygame.Rect(WIDTH - BUTTON_WIDTH, 0, BUTTON_WIDTH, BUTTON_HEIGHT)
+
     def draw_grid(self):
         """
         adds a grid to the pygame window
@@ -56,11 +58,16 @@ class Visuals:
         """
         run = True
         self.draw_grid()
-        dijkstra(self.graph, self.source_node,self.window)
         while run:
+            pygame.draw.rect(self.window, GREY, self.run_button)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    x, y = event.pos
+                    if self.run_button.collidepoint(x, y):
+                        dijkstra(self.graph, self.source_node, self.window)
+
             self.draw_nodes("bad")
             self.draw_nodes("good")
             self.add_bad_nodes_with_mouse()
@@ -73,3 +80,5 @@ class Visuals:
         if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
             x, y = pygame.mouse.get_pos()
             self.bad_nodes.append(Block(x, y))
+
+
