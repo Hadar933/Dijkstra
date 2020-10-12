@@ -73,6 +73,7 @@ class Visuals:
                             source_block.draw(self.window, START_COLOR)
                             self.source_node = Node(get_node_name(row, col))
                             self.is_src_button_init = True
+
                         elif not self.is_dest_button_init:
                             dest_block = Block(row, col, color=END_COLOR)
                             dest_block.draw(self.window, END_COLOR)
@@ -80,7 +81,7 @@ class Visuals:
                             self.is_dest_button_init = True
 
                     elif event.button == LEFT_MOUSE_CLICK:  # left click - bad nodes
-                        self.add_bad_nodes_with_mouse()
+                        self.add_bad_nodes_with_mouse(x,y)
                         self.draw_nodes("bad")
                         self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
 
@@ -88,16 +89,14 @@ class Visuals:
                     if event.key == pygame.K_RETURN:  # pressed enter - run algorithm
                         dijkstra(self.graph, self.source_node, self.window, self.dest_node)
 
-        pygame.display.update()
+            pygame.display.update()
 
-    def add_bad_nodes_with_mouse(self):
+    def add_bad_nodes_with_mouse(self,x,y):
         """
         add blocks to the game when left mouse is clicked. these blocks represent an unreachable node in the graph
         (i.e, an unreachable pixel that the dijkstra algorithm should not use when looking for path from src to dest)
         """
-        if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
-            x, y = pygame.mouse.get_pos()
-            row = x // BLOCK_SIZE
-            col = y // BLOCK_SIZE
-            node_name = get_node_name(row, col)
-            self.bad_nodes[node_name] = Block(row, col)
+        row = x // BLOCK_SIZE
+        col = y // BLOCK_SIZE
+        node_name = get_node_name(row, col)
+        self.bad_nodes[node_name] = Block(row, col)
