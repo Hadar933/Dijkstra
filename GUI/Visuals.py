@@ -12,7 +12,6 @@ class Visuals:
         self.source_node = source_node
         self.good_nodes = []  # all the possible pixels that are reachable
         self.bad_nodes = []  # the pixels that we cannot use (generated from mouse click)
-        self.path_nodes = []  # this are the nodes that composes the final path returned by the algorithm
 
         self.window = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption("Dijkstra")
@@ -48,9 +47,6 @@ class Visuals:
         elif node_type == "good":
             for good_node in self.good_nodes:
                 good_node.draw_block(self.window, GREY)
-        elif node_type == "path":
-            for good_node in self.good_nodes:
-                good_node.draw_block(self.window, GREY)
         pygame.display.update()
 
     def run_visuals(self):
@@ -59,7 +55,7 @@ class Visuals:
         """
         run = True
         self.draw_grid()
-        pygame.draw.rect(self.window, GREY, self.run_button) # run button
+        pygame.draw.rect(self.window, GREY, self.run_button)  # run button
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

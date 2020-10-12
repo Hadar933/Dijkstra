@@ -138,7 +138,6 @@ def print_path(window, source, dest):
     path.append(source)
     path = path[::-1]  # reverse the path to display source->dest and not dest->source
     names = [node.name for node in path]
-    print(names)
     for node in path:
         block = get_block_from_node(node)
         block.draw_block(window, RED)
