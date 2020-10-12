@@ -73,7 +73,7 @@ class Graph:
             vertex_dict[name] = node
         return vertex_dict
 
-    def get_vertexes(self):
+    def get_nodes(self):
         return self.__nodes
 
     def get_connections(self):

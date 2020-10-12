@@ -13,7 +13,7 @@ def build_min_heap(graph):
     :param graph: a dictionary that represents a graph
     """
     Q = []  # python min-heap can be represented in an array
-    for v in graph.get_vertexes().values():
+    for v in graph.get_nodes().values():
         heapq.heappush(Q, v)
     return Q
 

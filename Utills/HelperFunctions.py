@@ -119,8 +119,8 @@ def get_block_from_node(node):
     generates an instance of a Block from a given node by simple string manipulation to the node's name
     """
     coords = node.name.split(",")  # name format is '(row,col)'
-    row = int((coords[1])[:-1])
-    col = int((coords[0])[1:])
+    col = int((coords[1])[:-1])
+    row = int((coords[0])[1:])
     return Block(row, col)
 
 
