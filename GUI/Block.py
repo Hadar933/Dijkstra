@@ -13,7 +13,7 @@ class Block:
         self.color = color
         self.size = size
 
-    def draw_block(self, window, color):
+    def draw(self, window, color):
         """
         draws the block with the given colour
         :param window:

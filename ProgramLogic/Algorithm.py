@@ -37,7 +37,7 @@ def dijkstra(graph, source, window, dest):
         for v in neighbors_of_u:  # O(E)
             # drawing neighbors:
             block = get_block_from_node(v)
-            block.draw_block(window, VISITED_COLOR)
+            block.draw(window, VISITED_COLOR)
             # checking min path:
             weight_u_v = graph.get_edge_weight(u.name, v.name)
             v_dist = v.dist_from_source

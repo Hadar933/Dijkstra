@@ -1,19 +1,20 @@
 from Dijkstra.ProgramLogic.Algorithm import dijkstra
 from Dijkstra.GUI.Block import *
+from Dijkstra.ProgramLogic.Node import Node
 from Dijkstra.Utills.Constants import *
-from Dijkstra.Utills.HelperFunctions import get_node_name
+from Dijkstra.Utills.HelperFunctions import get_node_name, get_block_from_node
 
 
 class Visuals:
 
-    def __init__(self, graph, source_node, dest_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
+    def __init__(self, graph, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
         self.fps = FPS
         self.clock = pygame.time.Clock()
 
         self.graph = graph
 
-        self.dest_node = dest_node
-        self.source_node = source_node
+        self.dest_node = None
+        self.source_node = None
 
         self.bad_nodes = dict()  # un-usable pixels (generated from mouse click). key = node name, val = node instance
 
@@ -48,7 +49,7 @@ class Visuals:
         """
         if node_type == "bad":
             for bad_node in self.bad_nodes.values():
-                bad_node.draw_block(self.window, BARRIER_COLOR)
+                bad_node.draw(self.window, BARRIER_COLOR)
         pygame.display.update()
 
     def run_visuals(self):
@@ -61,19 +62,32 @@ class Visuals:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
+
                 elif event.type == pygame.MOUSEBUTTONDOWN:  # mouse click
                     x, y = event.pos
-                    if not self.is_src_button_init:
-                        pass
-                    elif not self.is_dest_button_init:
-                        pass
+                    row = y // BLOCK_SIZE
+                    col = x // BLOCK_SIZE
+                    if event.button == RIGHT_MOUSE_CLICK:  # right click - source and dest
+                        if not self.is_src_button_init:
+                            source_block = Block(row, col, color=START_COLOR)
+                            source_block.draw(self.window, START_COLOR)
+                            self.source_node = Node(get_node_name(row, col))
+                            self.is_src_button_init = True
+                        elif not self.is_dest_button_init:
+                            dest_block = Block(row, col, color=END_COLOR)
+                            dest_block.draw(self.window, END_COLOR)
+                            self.dest_node = Node(get_node_name(row, col))
+                            self.is_dest_button_init = True
+
+                    elif event.button == LEFT_MOUSE_CLICK:  # left click - bad nodes
+                        self.add_bad_nodes_with_mouse()
+                        self.draw_nodes("bad")
+                        self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
+
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:  # pressed enter - run algorithm
                         dijkstra(self.graph, self.source_node, self.window, self.dest_node)
 
-            self.add_bad_nodes_with_mouse()
-            self.draw_nodes("bad")
-            self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
         pygame.display.update()
 
     def add_bad_nodes_with_mouse(self):
