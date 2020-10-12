@@ -1,33 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import pygame
-
-from Dijkstra.Frontend.Block import Block
+from Dijkstra.GUI.Block import Block
 from Dijkstra.Utills.Constants import *
-import time
-
-
-def print_min_distances(graph, source_name):
-    """
-    prints the return value of dijkstra
-    :param graph:
-    :param source_name:
-    :return:
-    """
-    print("Source Node is: ", source_name)
-    for node in graph.get_vertexes().values():
-        print("Node=", node.name, ", dist from source =", node.dist_from_source)
-
-
-def print_path(window, source, dest):
-    path = [source]
-    curr_node = dest
-    while curr_node.prev:
-        path.append(curr_node)
-        curr_node = curr_node.prev
-    for node in path:
-        block = get_block_from_node(node)
-        block.draw_block(window, RED)
+from Dijkstra.Utills.Constants import RED
 
 
 def visualize_graph(edges_lst):
@@ -134,3 +109,20 @@ def get_block_from_node(node):
     x = int(coords[0][1]) * BLOCK_SIZE
     y = int(coords[1][0]) * BLOCK_SIZE
     return Block(x, y)
+
+
+def print_path(window, source, dest):
+    """
+    prints the minimum length path to the screen
+    :param window: pygame window
+    :param source: source node
+    :param dest: destination node
+    """
+    path = [source]
+    curr_node = dest
+    while curr_node.prev:
+        path.append(curr_node)
+        curr_node = curr_node.prev
+    for node in path:
+        block = get_block_from_node(node)
+        block.draw_block(window, RED)

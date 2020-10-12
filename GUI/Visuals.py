@@ -1,6 +1,5 @@
-from Dijkstra.Backend.Algorithm import dijkstra
-from Dijkstra.Backend.ProgramLogic import get_node_name
-from Dijkstra.Frontend.Block import *
+from Dijkstra.ProgramLogic.Algorithm import dijkstra
+from Dijkstra.GUI.Block import *
 from Dijkstra.Utills.Constants import *
 
 
@@ -38,18 +37,18 @@ class Visuals:
                 line_width = 1
                 pygame.draw.rect(self.window, GREY, rect, line_width)
 
-    def draw_nodes(self, type):
+    def draw_nodes(self, node_type):
         """
         draws a good node or a bad node (a node which we can or cannot go to, respectively), depenting on a flag
-        :param type: flag that represents which kind of node we wish to add
+        :param node_type: flag that represents which kind of node we wish to add
         """
-        if type == "bad":
+        if node_type == "bad":
             for bad_node in self.bad_nodes:
                 bad_node.draw_block(self.window, BLACK)
-        elif type == "good":
+        elif node_type == "good":
             for good_node in self.good_nodes:
                 good_node.draw_block(self.window, GREY)
-        elif type == "path":
+        elif node_type == "path":
             for good_node in self.good_nodes:
                 good_node.draw_block(self.window, GREY)
         pygame.display.update()
@@ -61,7 +60,6 @@ class Visuals:
         run = True
         self.draw_grid()
         pygame.draw.rect(self.window, GREY, self.run_button)
-
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -70,7 +68,6 @@ class Visuals:
                     x, y = event.pos
                     if self.run_button.collidepoint(x, y):
                         dijkstra(self.graph, self.source_node, self.window, self.dest_node)
-
             self.draw_nodes("bad")
             self.draw_nodes("good")
             self.add_bad_nodes_with_mouse()
@@ -83,6 +80,3 @@ class Visuals:
         if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
             x, y = pygame.mouse.get_pos()
             self.bad_nodes.append(Block(x, y))
-
-
-

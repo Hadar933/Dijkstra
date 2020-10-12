@@ -3,7 +3,7 @@ Project algorithm based on a min-heap
 @see: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/ (pseudo)
 """
 import heapq
-from Dijkstra.Backend.ProgramLogic import get_block_from_node, RED, print_min_distances, ORANGE, print_path
+from Dijkstra.Utills.HelperFunctions import print_path, get_block_from_node, ORANGE
 
 
 def build_min_heap(graph):
@@ -33,6 +33,8 @@ def dijkstra(graph, source, window, dest):
             break
         neighbors_of_u = graph.get_neighbors()[u.name]
         for v in neighbors_of_u:  # O(E)
+            block = get_block_from_node(v)
+            block.draw_block(window, ORANGE)
             weight_u_v = graph.get_edge_weight(u.name, v.name)
             v_dist = v.dist_from_source
             u_dist = u.dist_from_source
@@ -40,5 +42,4 @@ def dijkstra(graph, source, window, dest):
                 v.set_dist_from_source(u_dist + weight_u_v)
                 v.set_prev(u)
                 heapq.heappush(Q, v)  # O(logV)
-
     print_path(window, source, dest)

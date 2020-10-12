@@ -1,4 +1,4 @@
-from Dijkstra.Backend.Node import Node
+from Dijkstra.ProgramLogic.Node import Node
 from Dijkstra.Utills.Constants import INFINITY
 
 

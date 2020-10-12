@@ -1,12 +1,6 @@
 # represents infinity:
 INFINITY = float('inf')
 
-#TIME:
-TIME_DELAY = 500 # milliseconds
-# FONT:
-FONT = 'Ariel'
-FONT_SIZE = 25
-
 # MOUSE CLICKS
 LEFT_MOUSE_CLICK = 0
 MID_MOUSE_CLICK = 1

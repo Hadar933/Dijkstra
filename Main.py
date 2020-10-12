@@ -1,6 +1,6 @@
-from Dijkstra.Backend.Graph import Graph
-from Dijkstra.Frontend.Visuals import *
-from Dijkstra.Backend.ProgramLogic import *
+from Dijkstra.ProgramLogic.Graph import Graph
+from Dijkstra.GUI.Visuals import *
+from Dijkstra.Utills.HelperFunctions import *
 
 
 def main():
@@ -10,7 +10,8 @@ def main():
     """
     edges = generate_edge_from_screen()
     graph = Graph(edges)
-    source_node = graph.get_vertexes()["(1,2)"]
+    print(graph)
+    source_node = graph.get_vertexes()["(0,0)"]
     dest_node = graph.get_vertexes()["(6,7)"]
     visuals = Visuals(graph, source_node,dest_node)
     visuals.run_visuals()
