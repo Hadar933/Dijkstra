@@ -106,8 +106,8 @@ def get_block_from_node(node):
     generates an instance of a Block from a given node
     """
     coords = node.name.split(",")  # name format is '(x,y)'
-    x = int(coords[0][1]) * BLOCK_SIZE
-    y = int(coords[1][0]) * BLOCK_SIZE
+    y = int(coords[0][1]) * BLOCK_SIZE
+    x = int(coords[1][0]) * BLOCK_SIZE
     return Block(x, y)
 
 
@@ -118,11 +118,15 @@ def print_path(window, source, dest):
     :param source: source node
     :param dest: destination node
     """
-    path = [source]
+    path = []
     curr_node = dest
     while curr_node.prev:
         path.append(curr_node)
         curr_node = curr_node.prev
+    path.append(source)
+    path = path[::-1] # reverse the path to display source->dest and not dest->source
+    names = [node.name for node in path]
+    print(names)
     for node in path:
         block = get_block_from_node(node)
         block.draw_block(window, RED)

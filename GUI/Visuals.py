@@ -59,7 +59,7 @@ class Visuals:
         """
         run = True
         self.draw_grid()
-        pygame.draw.rect(self.window, GREY, self.run_button)
+        pygame.draw.rect(self.window, GREY, self.run_button) # run button
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

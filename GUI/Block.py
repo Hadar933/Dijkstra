@@ -8,8 +8,8 @@ class Block:
     """
 
     def __init__(self, x, y, size=BLOCK_SIZE, color=BLACK):
-        self.row = x // BLOCK_SIZE * BLOCK_SIZE  # ROUNDING SO WE WILL ONLY DRAW INSIDE GRID
-        self.col = y // BLOCK_SIZE * BLOCK_SIZE
+        self.row = y // BLOCK_SIZE * BLOCK_SIZE   # ROUNDING SO WE WILL ONLY DRAW INSIDE GRID
+        self.col = x // BLOCK_SIZE * BLOCK_SIZE
         self.x = x
         self.y = y
         self.color = color
@@ -22,5 +22,5 @@ class Block:
         :param color: a colour, represented with three digits (x1,x2,x3), where 0<=x_i<=255
         :return:
         """
-        rect = (self.row, self.col, self.size, self.size)
+        rect = (self.x, self.y, self.size, self.size)
         pygame.draw.rect(window, color, rect)
