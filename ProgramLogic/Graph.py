@@ -59,6 +59,9 @@ class Graph:
             graph_as_str += item + "-> " + str(self.__connections[item]) + "\n"
         return graph_as_str
 
+    def get_edges(self):
+        return self.__edges
+
     def __set_nodes(self):
         """
         creates a dictionary where the key is the name of the node, and the value is an instance of that node
@@ -103,3 +106,19 @@ class Graph:
         if key in self.__edges:
             return self.__edges[key]
         return INFINITY
+
+    def remove_edges_of_bad_nodes(self, bad_nodes):
+        """
+        removes all edges that are connected to a bad node (updates the field self.__edges)
+        :param bad_nodes: list of bad nodes
+        """
+        # item[0] = first node, item[1] = second node (that compose an edge)
+        new_dict = dict()
+        for key,value in self.__edges.items():
+            node1_name = key[0]
+            node2_name = key[1]
+            weight = value
+            if node1_name not in bad_nodes and node2_name not in bad_nodes:
+                new_dict[(node1_name, node2_name)] = weight
+        self.__edges = new_dict
+

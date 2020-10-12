@@ -6,18 +6,16 @@ from Dijkstra.Utills.HelperFunctions import get_node_name
 
 class Visuals:
 
-    def __init__(self, edges,graph, source_node, dest_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
+    def __init__(self,graph, source_node, dest_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
         self.fps = FPS
         self.clock = pygame.time.Clock()
 
-        self.edges = edges
         self.graph = graph
 
         self.dest_node = dest_node
         self.source_node = source_node
 
         self.bad_nodes = dict()  # un-usable pixels (generated from mouse click). key = node name, val = node instance
-        self.good_nodes = self.set_good_nodes()
 
         self.window = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption("Dijkstra")
@@ -66,9 +64,10 @@ class Visuals:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     x, y = event.pos
                     if self.run_button.collidepoint(x, y):
-                        dijkstra(self.graph, self.source_node, self.window, self.dest_node,self.clock)
+                        dijkstra(self.graph, self.source_node, self.window, self.dest_node)
             self.add_bad_nodes_with_mouse()
             self.draw_nodes("bad")
+            self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
         pygame.display.update()
 
     def add_bad_nodes_with_mouse(self):
@@ -82,17 +81,4 @@ class Visuals:
             col = y // BLOCK_SIZE
             node_name = get_node_name(row, col)
             self.bad_nodes[node_name] = Block(row, col)
-
-    def set_good_nodes(self):
-        """
-        generates notes that are usable when running the algorithm (all the screen without the pixels that were clicked
-        on with the mouse and are black)
-        :return:
-        """
-        good_nodes = {}
-        for item in self.edges:
-            node1_name = item[0]
-            node2_name = item[1]
-            if node1_name not in self.bad_nodes and node2_name not in self.bad_nodes:
-                pass
 

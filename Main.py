@@ -13,8 +13,7 @@ def main():
     graph = Graph(edges)
     source_node = graph.get_vertexes()["(5,7)"]
     dest_node = graph.get_vertexes()["(30,30)"]
-    visuals = Visuals(edges,graph, source_node, dest_node)
-    visuals.set_good_nodes()
+    visuals = Visuals(graph, source_node, dest_node)
     visuals.run_visuals()
 
 

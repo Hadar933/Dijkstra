@@ -18,7 +18,7 @@ def build_min_heap(graph):
     return Q
 
 
-def dijkstra(graph, source, window, dest,clock):
+def dijkstra(graph, source, window, dest):
     """
     dijkstra algorithm
     :param clock:
