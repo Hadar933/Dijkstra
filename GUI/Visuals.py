@@ -43,7 +43,7 @@ class Visuals:
         """
         if node_type == "bad":
             for bad_node in self.bad_nodes:
-                bad_node.draw_block(self.window, BLACK)
+                bad_node.draw_block(self.window, BARRIER_COLOR)
         elif node_type == "good":
             for good_node in self.good_nodes:
                 good_node.draw_block(self.window, GREY)
@@ -70,8 +70,8 @@ class Visuals:
 
     def add_bad_nodes_with_mouse(self):
         """
-        add blocks to the game when left mouse is clicked. these blocks will represent an unreachable node in the graph
-        (i.e, an unreachable pixel that the dijkstra algorithm should not use)
+        add blocks to the game when left mouse is clicked. these blocks represent an unreachable node in the graph
+        (i.e, an unreachable pixel that the dijkstra algorithm should not use when looking for path from src to dest)
         """
         if pygame.mouse.get_pressed()[LEFT_MOUSE_CLICK]:
             x, y = pygame.mouse.get_pos()

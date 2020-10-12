@@ -35,7 +35,7 @@ def dijkstra(graph, source, window, dest):
         neighbors_of_u = graph.get_neighbors()[u.name]
         for v in neighbors_of_u:  # O(E)
             block = get_block_from_node(v)
-            block.draw_block(window, ORANGE)
+            block.draw_block(window, VISITED_COLOR)
             weight_u_v = graph.get_edge_weight(u.name, v.name)
             v_dist = v.dist_from_source
             u_dist = u.dist_from_source

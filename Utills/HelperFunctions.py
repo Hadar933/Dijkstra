@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from Dijkstra.GUI.Block import Block
 from Dijkstra.ProgramLogic.Node import Node
 from Dijkstra.Utills.Constants import *
-from Dijkstra.Utills.Constants import RED
+from Dijkstra.Utills.Constants import PATH_COLOR
 
 
 def visualize_graph(edges_lst):
@@ -140,4 +140,4 @@ def print_path(window, source, dest):
     names = [node.name for node in path]
     for node in path:
         block = get_block_from_node(node)
-        block.draw_block(window, RED)
+        block.draw_block(window, PATH_COLOR)

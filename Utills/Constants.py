@@ -15,9 +15,9 @@ COLS = WIDTH // BLOCK_SIZE
 BUTTON_WIDTH = 70
 BUTTON_HEIGHT = 20
 
-# COLORS (RGB):
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREY = (160, 160, 160)
-RED = (255, 0, 0)
-ORANGE = (255, 128, 0)
+# COLORS (R,G,B):
+BARRIER_COLOR = (0, 0, 0)  # represents node that were drawn with the mouse, cannot walk on those (black)
+WHITE = (255, 255, 255)  # for the background (white)
+GREY = (160, 160, 160)  # for grid lines and buttons (grey)
+PATH_COLOR = (255, 0, 0)  # the final minimum path (red)
+VISITED_COLOR = (255, 128, 0)  # all the visited nodes (orange)

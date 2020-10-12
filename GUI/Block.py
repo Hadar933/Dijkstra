@@ -1,5 +1,5 @@
 import pygame
-from Dijkstra.Utills.Constants import BLACK, BLOCK_SIZE
+from Dijkstra.Utills.Constants import BARRIER_COLOR, BLOCK_SIZE
 
 
 class Block:
@@ -7,7 +7,7 @@ class Block:
     a class that represents a block in a grid (sized BLOCK_SIZE*BLOCK_SIZE)
     """
 
-    def __init__(self, row, col, size=BLOCK_SIZE, color=BLACK):
+    def __init__(self, row, col, size=BLOCK_SIZE, color=BARRIER_COLOR):
         self.row = row
         self.col = col
         self.color = color
