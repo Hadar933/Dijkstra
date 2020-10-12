@@ -6,7 +6,7 @@ from Dijkstra.Utills.HelperFunctions import get_node_name
 
 class Visuals:
 
-    def __init__(self,graph, source_node, dest_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
+    def __init__(self, graph, source_node, dest_node, color=WHITE, screen_width=WIDTH, screen_height=HEIGHT):
         self.fps = FPS
         self.clock = pygame.time.Clock()
 
@@ -28,7 +28,8 @@ class Visuals:
         self.rows = self.height // BLOCK_SIZE
         self.cols = self.width // BLOCK_SIZE
 
-        self.run_button = pygame.Rect(WIDTH - BUTTON_WIDTH, 0, BUTTON_WIDTH, BUTTON_HEIGHT)  # button that runs dijkstra
+        self.is_src_button_init = False
+        self.is_dest_button_init = False
 
     def draw_grid(self):
         """
@@ -56,15 +57,20 @@ class Visuals:
         """
         run = True
         self.draw_grid()
-        pygame.draw.rect(self.window, GREY, self.run_button)  # run button
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
-                if event.type == pygame.MOUSEBUTTONDOWN:
+                elif event.type == pygame.MOUSEBUTTONDOWN:  # mouse click
                     x, y = event.pos
-                    if self.run_button.collidepoint(x, y):
+                    if not self.is_src_button_init:
+                        pass
+                    elif not self.is_dest_button_init:
+                        pass
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:  # pressed enter - run algorithm
                         dijkstra(self.graph, self.source_node, self.window, self.dest_node)
+
             self.add_bad_nodes_with_mouse()
             self.draw_nodes("bad")
             self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
@@ -81,4 +87,3 @@ class Visuals:
             col = y // BLOCK_SIZE
             node_name = get_node_name(row, col)
             self.bad_nodes[node_name] = Block(row, col)
-

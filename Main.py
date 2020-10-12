@@ -11,8 +11,8 @@ def main():
     print("ROWS=", ROWS, " COLS=", COLS)
     edges = generate_edge_from_screen()
     graph = Graph(edges)
-    source_node = graph.get_vertexes()["(5,7)"]
-    dest_node = graph.get_vertexes()["(30,30)"]
+    source_node = graph.get_vertexes()["(0,0)"]
+    dest_node = graph.get_vertexes()["(3,3)"]
     visuals = Visuals(graph, source_node, dest_node)
     visuals.run_visuals()
 

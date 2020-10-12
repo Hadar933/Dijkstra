@@ -114,11 +114,10 @@ class Graph:
         """
         # item[0] = first node, item[1] = second node (that compose an edge)
         new_dict = dict()
-        for key,value in self.__edges.items():
+        for key, value in self.__edges.items():
             node1_name = key[0]
             node2_name = key[1]
             weight = value
             if node1_name not in bad_nodes and node2_name not in bad_nodes:
                 new_dict[(node1_name, node2_name)] = weight
         self.__edges = new_dict
-
