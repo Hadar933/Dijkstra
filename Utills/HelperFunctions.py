@@ -31,6 +31,15 @@ def get_node_name(row, col):
     return "({},{})".format(row, col)
 
 
+def is_node_bad(nodes_name):
+    """
+    a function that checks if the given node is in the "bad" nodes list (nodes that were generated from mouse click
+    that the algorithm shouldn't use)
+    :param nodes_name: string '(row,col)'
+    :return: true: node is bad, false: otherwise
+    """
+
+
 def generate_edge_from_screen():
     """
     this method generates a list of edges, where each edges corresponds to a connection of pixels on the screen,
@@ -41,13 +50,15 @@ def generate_edge_from_screen():
     edges_lst = []
     for row in range(ROWS):
         for col in range(COLS):
-            # 4 edges:
-            set_four_edges(col, row, edges_lst, weight)
-            # 2 edge rows or 2 edge columns without the 4 edges:
-            set_edge_rows_cols(col, edges_lst, row, weight)
-            # else - general case:
-            if 0 < row < ROWS - 1 and 0 < col < COLS - 1:
-                set_general_edge(col, edges_lst, row, weight)
+            node_name = get_node_name(row, col)
+            if not is_node_bad(node_name):
+                # 4 edges:
+                set_four_edges(col, row, edges_lst, weight)
+                # 2 edge rows or 2 edge columns without the 4 edges:
+                set_edge_rows_cols(col, edges_lst, row, weight)
+                # else - general case:
+                if 0 < row < ROWS - 1 and 0 < col < COLS - 1:
+                    set_general_edge(col, edges_lst, row, weight)
     return edges_lst
 
 
@@ -137,7 +148,6 @@ def print_path(window, source, dest):
         curr_node = curr_node.prev
     path.append(source)
     path = path[::-1]  # reverse the path to display source->dest and not dest->source
-    names = [node.name for node in path]
     for node in path:
         block = get_block_from_node(node)
         block.draw_block(window, PATH_COLOR)

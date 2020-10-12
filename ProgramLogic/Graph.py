@@ -46,7 +46,7 @@ class Graph:
         where (A,B,4) means vertex A is connected to vertex B (undirected), and the weight is 4
         """
         self.__connections = set_connections(edges)
-        self.__vertexes = self.__set_vertexes()
+        self.__nodes = self.__set_nodes()
         self.__neighboring_lst = self.__set_neighboring_set()
         self.__edges = parse_edges(edges)
 
@@ -59,7 +59,7 @@ class Graph:
             graph_as_str += item + "-> " + str(self.__connections[item]) + "\n"
         return graph_as_str
 
-    def __set_vertexes(self):
+    def __set_nodes(self):
         """
         creates a dictionary where the key is the name of the node, and the value is an instance of that node
         """
@@ -71,7 +71,7 @@ class Graph:
         return vertex_dict
 
     def get_vertexes(self):
-        return self.__vertexes
+        return self.__nodes
 
     def get_connections(self):
         return self.__connections
@@ -83,7 +83,7 @@ class Graph:
         result = dict()
         for node in self.__connections:
             tuples = self.__connections[node]
-            neighbors = [self.__vertexes[tup[0]] for tup in tuples]
+            neighbors = [self.__nodes[tup[0]] for tup in tuples]
             result[node] = neighbors
         return result
 

@@ -18,9 +18,10 @@ def build_min_heap(graph):
     return Q
 
 
-def dijkstra(graph, source, window, dest):
+def dijkstra(graph, source, window, dest,clock):
     """
     dijkstra algorithm
+    :param clock:
     :param dest: destination node
     :param window: pygame window, on which we draw the path
     :param graph: a representation of a graph (set)
@@ -34,8 +35,10 @@ def dijkstra(graph, source, window, dest):
             break
         neighbors_of_u = graph.get_neighbors()[u.name]
         for v in neighbors_of_u:  # O(E)
+            # drawing neighbors:
             block = get_block_from_node(v)
             block.draw_block(window, VISITED_COLOR)
+            # checking min path:
             weight_u_v = graph.get_edge_weight(u.name, v.name)
             v_dist = v.dist_from_source
             u_dist = u.dist_from_source

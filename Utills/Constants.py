@@ -1,13 +1,16 @@
 # represents infinity:
 INFINITY = float('inf')
 
+# game frame/sec
+FPS = 30
+
 # MOUSE CLICKS
 LEFT_MOUSE_CLICK = 0
 MID_MOUSE_CLICK = 1
 RIGHT_MOUSE_CLICK = 2
 
 # RESOLUTION
-BLOCK_SIZE = 25
+BLOCK_SIZE = 10
 WIDTH = 500
 HEIGHT = 500
 ROWS = HEIGHT // BLOCK_SIZE
