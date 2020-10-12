@@ -3,7 +3,8 @@ Project algorithm based on a min-heap
 @see: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/ (pseudo)
 """
 import heapq
-from Dijkstra.Utills.HelperFunctions import print_path, get_block_from_node, ORANGE
+from Dijkstra.Utills.HelperFunctions import print_path, get_block_from_node
+from Dijkstra.Utills.Constants import *
 
 
 def build_min_heap(graph):

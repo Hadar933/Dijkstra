@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from Dijkstra.GUI.Block import Block
+from Dijkstra.ProgramLogic.Node import Node
 from Dijkstra.Utills.Constants import *
 from Dijkstra.Utills.Constants import RED
 
@@ -46,11 +47,22 @@ def generate_edge_from_screen():
             set_edge_rows_cols(col, edges_lst, row, weight)
             # else - general case:
             if 0 < row < ROWS - 1 and 0 < col < COLS - 1:
-                edges_lst.append((get_node_name(row, col), get_node_name(row, col - 1), weight))
-                edges_lst.append((get_node_name(row, col), get_node_name(row, col + 1), weight))
-                edges_lst.append((get_node_name(row, col), get_node_name(row - 1, col), weight))
-                edges_lst.append((get_node_name(row, col), get_node_name(row + 1, col), weight))
+                set_general_edge(col, edges_lst, row, weight)
     return edges_lst
+
+
+def set_general_edge(col, edges_lst, row, weight):
+    """
+    a helper method that adds the relevant edges for all cases that hasnt previously addressed
+    :param col: current column
+    :param edges_lst: lst of edges to append to
+    :param row: current row
+    :param weight: =1 by default
+    """
+    edges_lst.append((get_node_name(row, col), get_node_name(row, col - 1), weight))
+    edges_lst.append((get_node_name(row, col), get_node_name(row, col + 1), weight))
+    edges_lst.append((get_node_name(row, col), get_node_name(row - 1, col), weight))
+    edges_lst.append((get_node_name(row, col), get_node_name(row + 1, col), weight))
 
 
 def set_edge_rows_cols(col, edges_lst, row, weight):
@@ -103,12 +115,12 @@ def set_four_edges(col, row, edges_lst, weight):
 
 def get_block_from_node(node):
     """
-    generates an instance of a Block from a given node
+    generates an instance of a Block from a given node by simple string manipulation to the node's name
     """
-    coords = node.name.split(",")  # name format is '(x,y)'
-    y = int(coords[0][1]) * BLOCK_SIZE
-    x = int(coords[1][0]) * BLOCK_SIZE
-    return Block(x, y)
+    coords = node.name.split(",")  # name format is '(row,col)'
+    row = int((coords[1])[:-1])
+    col = int((coords[0])[1:])
+    return Block(row, col)
 
 
 def print_path(window, source, dest):
@@ -124,7 +136,7 @@ def print_path(window, source, dest):
         path.append(curr_node)
         curr_node = curr_node.prev
     path.append(source)
-    path = path[::-1] # reverse the path to display source->dest and not dest->source
+    path = path[::-1]  # reverse the path to display source->dest and not dest->source
     names = [node.name for node in path]
     print(names)
     for node in path:

@@ -7,6 +7,11 @@ class Node:
     """
 
     def __init__(self, name, dist_from_source=INFINITY):
+        """
+        constructor for a node instance
+        :param name: a name represented as string : '(row,col)'
+        :param dist_from_source: distance from source node
+        """
         self.name = name
         self.dist_from_source = dist_from_source
         self.prev = None

@@ -10,8 +10,8 @@ def main():
     """
     edges = generate_edge_from_screen()
     graph = Graph(edges)
-    source_node = graph.get_vertexes()["(0,1)"]
-    dest_node = graph.get_vertexes()["(5,5)"]
+    source_node = graph.get_vertexes()["(5,7)"]
+    dest_node = graph.get_vertexes()["(16,12)"]
     visuals = Visuals(graph, source_node,dest_node)
     visuals.run_visuals()
 
