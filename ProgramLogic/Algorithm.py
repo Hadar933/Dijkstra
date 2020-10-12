@@ -44,6 +44,6 @@ def dijkstra(graph, source, window, dest):
             u_dist = u.dist_from_source
             if v_dist > u_dist + weight_u_v:
                 v.set_dist_from_source(u_dist + weight_u_v)
-                v.set_prev(u)
+                v.set_prev(u) # updating prev is done to reconstruct the path itself
                 heapq.heappush(Q, v)  # O(logV)
     print_path(window, source, dest)
