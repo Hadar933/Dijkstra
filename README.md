@@ -31,7 +31,7 @@ also:
 ### Running the Visuals :
 under `Dijkstra.Main` execute `main()`
 
-    example:
+   example:
     
    ![rsz_95909766-b6a68d00-0da7-11eb-8727-a042ad20cb2e](https://user-images.githubusercontent.com/45313790/95911645-6bda4480-0daa-11eb-8856-638577e496d2.jpg)
 
