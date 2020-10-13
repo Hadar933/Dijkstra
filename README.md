@@ -48,20 +48,16 @@ as well as a GUI interface that displays a minimum path from source node to dest
 under `Dijkstra.Main` execute `main()`
     example:
     ![Capture](https://user-images.githubusercontent.com/45313790/95908757-24ea5000-0da6-11eb-9e09-984ccb4eec93.JPG)
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
-- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `#c5f015`
-- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `#1589F0`
-```
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Minimum Path`
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Source Node`
+- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Destination Node`
+- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Destination Node`
+- ![#000000](https://via.placeholder.com/15/1589F0/000000?text=+) `Blocked Nodes`
+- ![#F18E14](https://via.placeholder.com/15/1589F0/000000?text=+) `Visited Nodes`
     
-
-
-   
  -------------------------------------------------------------------------------
 
 ### Notes
-
-a visualization of the graph is available:
-given variable `edges` from above, use `visualize_graph(edges)`
-![Webp net-resizeimage (1)](https://user-images.githubusercontent.com/45313790/95631881-20175a80-0a8d-11eb-8d27-86c6ffe04451.jpg)
+- there are a few bugs, that I havent fixed yet. some of which may cause the algorithm to fail, while other will crash the screen when clicking on some certain position.
 
 
