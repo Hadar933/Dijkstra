@@ -20,7 +20,9 @@ a graph G=<V,E>, that represents the grid, is comprised of the following edges a
 `E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1), ('(0,1)', '(1,1)', 1),...,('(2,2)', '(2,1)', 1)]`
 
 where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected to node (1,0) with an edge with weight=1.
+
 also:
+
 -the source and destination nodes are chosen by the user (two right clicks with the mouse)
 -the user can "draw" (left mouse click) on the screen pixels that represents a node that doesnt exist, and therefore the algorithm wont use in runtime (these can be thought of as barriers, and they are colored black) 
   
