@@ -3,10 +3,11 @@
 ### Description:
 
 an efficient algorithm for finding the shortest path from `source` node to the rest of the nodes in a graph
+as well as a GUI interface that displays a minimum path from source node to destination node, and all the visited nodes
 
 -------------------------------------------------------------------------------
 
-### Running example :
+### Running the algorithm (example) :
 
     edges = [("A", "B", 1), ("A", "C", 1),
              ("B", "A", 1), ("B", "C", 2), ("B", "D", 3), ("B", "E", 4),
@@ -41,7 +42,14 @@ an efficient algorithm for finding the shortest path from `source` node to the r
             if v_dist > u_dist + weight_u_v:
                 v.set_dist_from_source(u_dist + weight_u_v)
                 heapq.heappush(Q, v)  # O(logV)
-  -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+
+### Running the Visuals :
+    under `Dijkstra.Main` execute `main()`
+    example:
+    
+   
+ -------------------------------------------------------------------------------
 
 ### Notes
 
