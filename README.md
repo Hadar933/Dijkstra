@@ -2,24 +2,20 @@
 
 ### Description:
 
-an efficient algorithm for finding the shortest path from `source` node to the rest of the nodes in a graph
-as well as a GUI interface that displays a minimum path from source node to destination node, and all the visited nodes
+an efficient algorithm for finding the shortest path from `source` node to `dest` node in a graph.
+The run of the algorithm is portrayed via GUI interface that displays a minimum path from source node to destination node, and all the visited nodes
 
 -------------------------------------------------------------------------------
 
-### Running the algorithm (example) :
-
-    edges = [("A", "B", 1), ("A", "C", 1),
-             ("B", "A", 1), ("B", "C", 2), ("B", "D", 3), ("B", "E", 4),
-             ("C", "A", 1), ("C", "B", 2), ("C", "D", 1),
-             ("D", "C", 1), ("D", "B", 3), ("D", "E", 2), ("D", "F", 2),
-             ("E", "B", 4), ("E", "D", 2), ("E", "F", 1),
-             ("F", "E", 1), ("F", "D", 2)]
-
-    graph = Graph(edges)
-    source_node = graph.get_vertexes()["A"]
-    dijkstra(graph, source_node)
-    print_min_distances(graph, source_node.name)
+### Main logic:
+    we run Dijkstra on a weighted graph, where each vertex is a "square" on the screen, an edge is a connection between two connected pixels, and the weight is 1.
+    as an example, consider a 3x3 pixel grid:
+    ![Capture](https://user-images.githubusercontent.com/45313790/95910432-bd81cf80-0da8-11eb-9c98-c9be880a2b4e.JPG)
+    a graph G=<V,E>, that represents the grid, corresponds of the following edges and vertexes (starting from (0,0)):
+    V = ['(0,0)', '(0,1)', '(0,2)', '(1,0)', '(1,1)', '(1,2)', '(2,0)', '(2,1)', '(2,2)']
+    E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1), ('(0,1)', '(1,1)', 1), ('(0,1)', '(0,2)', 1),...,('(2,2)', '(2,1)', 1)]
+    where ('(0,0)', '(1,0)', 1), for example, means that node (0,0) is connected to node (1,0) with an edge with weight=1.
+    
   
 -------------------------------------------------------------------------------
   
