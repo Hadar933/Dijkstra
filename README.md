@@ -17,7 +17,7 @@ a graph G=<V,E>, that represents the grid, corresponds of the following edges an
 
 `V = ['(0,0)', '(0,1)', '(0,2)', '(1,0)', '(1,1)', '(1,2)', '(2,0)', '(2,1)', '(2,2)']`
 
-`E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1), ('(0,1)', '(1,1)', 1), ('(0,1)', '(0,2)', 1),...,('(2,2)', '(2,1)', 1)]`
+`E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1), ('(0,1)', '(1,1)', 1),...,('(2,2)', '(2,1)', 1)]`
 
 where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected to node (1,0) with an edge with weight=1.
     
@@ -52,7 +52,6 @@ under `Dijkstra.Main` execute `main()`
 
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Minimum Path`
 - ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Source Node`
-- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Destination Node`
 - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Destination Node`
 - ![#000000](https://via.placeholder.com/15/1589F0/000000?text=+) `Blocked Nodes`
 - ![#F18E14](https://via.placeholder.com/15/1589F0/000000?text=+) `Visited Nodes`
