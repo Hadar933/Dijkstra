@@ -8,13 +8,13 @@ The run of the algorithm is portrayed via GUI interface that displays a minimum 
 -------------------------------------------------------------------------------
 
 ### Main logic:
-    we run Dijkstra on a weighted graph, where each vertex is a "square" on the screen, an edge is a connection between two connected pixels, and the weight is 1.
-    as an example, consider a 3x3 pixel grid:
-    ![Capture](https://user-images.githubusercontent.com/45313790/95910432-bd81cf80-0da8-11eb-9c98-c9be880a2b4e.JPG)
-    a graph G=<V,E>, that represents the grid, corresponds of the following edges and vertexes (starting from (0,0)):
-    V = ['(0,0)', '(0,1)', '(0,2)', '(1,0)', '(1,1)', '(1,2)', '(2,0)', '(2,1)', '(2,2)']
-    E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1), ('(0,1)', '(1,1)', 1), ('(0,1)', '(0,2)', 1),...,('(2,2)', '(2,1)', 1)]
-    where ('(0,0)', '(1,0)', 1), for example, means that node (0,0) is connected to node (1,0) with an edge with weight=1.
+we run Dijkstra on a weighted graph, where each vertex is a "square" on the screen, an edge is a connection between two connected pixels, and the weight is 1.
+as an example, consider a 3x3 pixel grid:
+![Capture](https://user-images.githubusercontent.com/45313790/95910432-bd81cf80-0da8-11eb-9c98-c9be880a2b4e.JPG)
+a graph G=<V,E>, that represents the grid, corresponds of the following edges and vertexes (starting from (0,0)):
+`V = ['(0,0)', '(0,1)', '(0,2)', '(1,0)', '(1,1)', '(1,2)', '(2,0)', '(2,1)', '(2,2)']`
+`E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1), ('(0,1)', '(1,1)', 1), ('(0,1)', '(0,2)', 1),...,('(2,2)', '(2,1)', 1)]`
+where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected to node (1,0) with an edge with weight=1.
     
   
 -------------------------------------------------------------------------------
