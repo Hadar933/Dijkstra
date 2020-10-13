@@ -13,7 +13,7 @@ as an example, consider a 3x3 pixel grid:
 
 ![Capture](https://user-images.githubusercontent.com/45313790/95910432-bd81cf80-0da8-11eb-9c98-c9be880a2b4e.JPG)
 
-a graph G=<V,E>, that represents the grid, corresponds of the following edges and vertexes (starting from (0,0)):
+a graph G=<V,E>, that represents the grid, is comprised of the following edges and vertexes (starting from (0,0)):
 
 `V = ['(0,0)', '(0,1)', '(0,2)', '(1,0)', '(1,1)', '(1,2)', '(2,0)', '(2,1)', '(2,2)']`
 
