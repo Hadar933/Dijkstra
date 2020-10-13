@@ -48,8 +48,9 @@ class Visuals:
         :param node_type: flag that represents which kind of node we wish to add
         """
         if node_type == "bad":
-            for bad_node in self.bad_nodes.values():
-                bad_node.draw(self.window, BARRIER_COLOR)
+            for bad_block in self.bad_nodes.values():
+                bad_block.draw(self.window, BARRIER_COLOR)
+
         pygame.display.update()
 
     def run_visuals(self):
@@ -73,13 +74,13 @@ class Visuals:
                             source_block.draw(self.window, START_COLOR)
                             self.source_node = self.graph.get_nodes()[(get_node_name(row, col))]
                             self.is_src_button_init = True
-
+                            self.source_node.is_colored = True
                         elif not self.is_dest_button_init:
                             dest_block = Block(row, col, color=END_COLOR)
                             dest_block.draw(self.window, END_COLOR)
                             self.dest_node = self.graph.get_nodes()[(get_node_name(row, col))]
                             self.is_dest_button_init = True
-
+                            self.dest_node.is_colored = True
                     elif event.button == LEFT_MOUSE_CLICK:  # left click - bad nodes
                         self.add_bad_nodes_with_mouse(x, y)
                         self.draw_nodes("bad")
@@ -98,4 +99,6 @@ class Visuals:
         row = x // BLOCK_SIZE
         col = y // BLOCK_SIZE
         node_name = get_node_name(row, col)
+        node_instance = self.graph.get_nodes()[node_name]
+        node_instance.is_colored = True
         self.bad_nodes[node_name] = Block(row, col)
