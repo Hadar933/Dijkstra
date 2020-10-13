@@ -48,13 +48,9 @@ as well as a GUI interface that displays a minimum path from source node to dest
 under `Dijkstra.Main` execute `main()`
     example:
     ![Capture](https://user-images.githubusercontent.com/45313790/95908757-24ea5000-0da6-11eb-9e09-984ccb4eec93.JPG)
-    Legend:
-   ```diff
-- minimum path
-+ source node
-! visited nodes
-# visited nodes (white)
-@@ text in purple (and bold)@@
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `#c5f015`
+- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `#1589F0`
 ```
     
 
