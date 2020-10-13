@@ -19,7 +19,7 @@ a graph G=<V,E>, that represents the grid, is comprised of the following edges a
 
 `E = [('(0,0)', '(1,0)', 1), ('(0,0)', '(0,1)', 1), ('(0,1)', '(0,0)', 1),...,('(2,2)', '(2,1)', 1)]`
 
-where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected to node (1,0) with an edge with weight=1.
+where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected to node (1,0) with an edge weighing 1.
 
 also:
 
