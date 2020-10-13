@@ -23,8 +23,8 @@ where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected t
 
 also:
 
--the source and destination nodes are chosen by the user (two right clicks with the mouse)
--the user can "draw" (left mouse click) on the screen pixels that represents a node that doesnt exist, and therefore the algorithm wont use in runtime (these can be thought of as barriers, and they are colored black) 
+- the source and destination nodes are chosen by the user (two right clicks with the mouse)
+- the user can "draw" (left mouse click) on the screen pixels that represents a node that doesnt exist, and therefore the algorithm wont use in runtime (these can be thought of as barriers, and they are colored black) 
   
  -------------------------------------------------------------------------------
 
