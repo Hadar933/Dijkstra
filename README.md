@@ -45,9 +45,18 @@ as well as a GUI interface that displays a minimum path from source node to dest
  -------------------------------------------------------------------------------
 
 ### Running the Visuals :
-    under `Dijkstra.Main` execute `main()`
+under `Dijkstra.Main` execute `main()`
     example:
+    ![Capture](https://user-images.githubusercontent.com/45313790/95908757-24ea5000-0da6-11eb-9e09-984ccb4eec93.JPG)
+    Legend:
+    - ![#f03c15](The minimum path) `#f03c15`
+    - ![#f03c15](Visited nodes) `#f03c15`
+    - ![#f03c15](Source node) `#f03c15`
+    - ![#f03c15](Destination node) `#f03c15`
+    - ![#f03c15](Unvisited nodes) `#f03c15`
     
+
+
    
  -------------------------------------------------------------------------------
 
