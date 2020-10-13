@@ -48,13 +48,15 @@ where `('(0,0)', '(1,0)', 1)`, for example, means that node (0,0) is connected t
 ### Running the Visuals :
 under `Dijkstra.Main` execute `main()`
     example:
-    ![Capture](https://user-images.githubusercontent.com/45313790/95909766-b6a68d00-0da7-11eb-8727-a042ad20cb2e.JPG)
+    
+    ![rsz_95909766-b6a68d00-0da7-11eb-8727-a042ad20cb2e](https://user-images.githubusercontent.com/45313790/95911645-6bda4480-0daa-11eb-8856-638577e496d2.jpg)
+
 
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Minimum Path`
 - ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Source Node`
 - ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Destination Node`
-- ![#000000](https://via.placeholder.com/15/1589F0/000000?text=+) `Blocked Nodes`
-- ![#F18E14](https://via.placeholder.com/15/1589F0/000000?text=+) `Visited Nodes`
+- ![#000000](https://via.placeholder.com/15/000000/000000?text=+) `Blocked Nodes`
+- ![#F18E14](https://via.placeholder.com/15/F18E14/000000?text=+) `Visited Nodes`
     
  -------------------------------------------------------------------------------
 
