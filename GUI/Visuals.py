@@ -76,9 +76,8 @@ class Visuals:
                         self.add_bad_nodes(x, y)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:  # pressed enter - run algorithm
-                        dijkstra(self.graph, self.source_node, self.window, self.dest_node)
+                        dijkstra(self.graph, self.source_node, self.window, self.dest_node,self.clock)
             pygame.display.update()
-            self.clock.tick(FPS)
 
     def add_bad_nodes(self, x, y):
         """

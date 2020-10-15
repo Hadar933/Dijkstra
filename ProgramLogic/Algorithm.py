@@ -3,6 +3,9 @@ Project algorithm based on a min-heap
 @see: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/ (pseudo)
 """
 import heapq
+
+import pygame
+
 from Dijkstra.Utills.HelperFunctions import print_path, get_block_from_node
 from Dijkstra.Utills.Constants import *
 
@@ -18,10 +21,10 @@ def build_min_heap(graph):
     return Q
 
 
-def dijkstra(graph, source, window, dest):
+def dijkstra(graph, source, window, dest, clock):
     """
     dijkstra algorithm
-    :param clock:
+    :param clock: pygame time clock
     :param dest: destination node
     :param window: pygame window, on which we draw the path
     :param graph: a representation of a graph (set)
@@ -39,12 +42,16 @@ def dijkstra(graph, source, window, dest):
             if not v.is_colored:
                 block = get_block_from_node(v)
                 block.draw(window, VISITED_COLOR)
+
+                pygame.display.flip()
+                pygame.event.pump()
+                clock.tick(FPS)
             # checking min path:
             weight_u_v = graph.get_edge_weight(u.name, v.name)
             v_dist = v.dist_from_source
             u_dist = u.dist_from_source
             if v_dist > u_dist + weight_u_v:
                 v.set_dist_from_source(u_dist + weight_u_v)
-                v.set_prev(u) # updating prev is done to reconstruct the path itself
+                v.set_prev(u)  # updating prev is done to reconstruct the path itself
                 heapq.heappush(Q, v)  # O(logV)
     print_path(window, source, dest)

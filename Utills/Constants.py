@@ -2,7 +2,7 @@
 INFINITY = float('inf')
 
 # game frame/sec
-FPS = 15
+FPS = 800
 
 # MOUSE CLICKS
 LEFT_MOUSE_CLICK = 1
