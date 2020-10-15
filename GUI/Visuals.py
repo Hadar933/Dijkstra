@@ -63,7 +63,6 @@ class Visuals:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
-
                 elif event.type == pygame.MOUSEBUTTONDOWN:  # mouse click
                     x, y = event.pos
                     row = x // BLOCK_SIZE
@@ -74,15 +73,22 @@ class Visuals:
                         elif not self.is_dest_button_init:
                             self.init_dest_node(col, row)
                     elif event.button == LEFT_MOUSE_CLICK:  # left click - bad nodes
-                        self.add_bad_nodes_with_mouse(x, y)
-                        self.draw_nodes("bad")
-                        self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
-
+                        self.add_bad_nodes(x, y)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:  # pressed enter - run algorithm
                         dijkstra(self.graph, self.source_node, self.window, self.dest_node)
             pygame.display.update()
             self.clock.tick(FPS)
+
+    def add_bad_nodes(self, x, y):
+        """
+        initializes all the "bad nodes" - removing them from the data
+        :param x: x coord of bad node
+        :param y: y coord of bad node
+        """
+        self.add_bad_nodes_with_mouse(x, y)
+        self.draw_nodes("bad")
+        self.graph.remove_edges_of_bad_nodes(self.bad_nodes)
 
     def init_dest_node(self, col, row):
         """
