@@ -139,5 +139,6 @@ def print_path(window, source, dest):
     path.append(source)
     path = path[::-1]  # reverse the path to display source->dest and not dest->source
     for node in path:
-        block = get_block_from_node(node)
-        block.draw(window, PATH_COLOR)
+        if not node.is_colored:
+            block = get_block_from_node(node)
+            block.draw(window, PATH_COLOR)

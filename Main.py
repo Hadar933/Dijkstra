@@ -8,7 +8,10 @@ def main():
     main runner of the program
     :return:
     """
-    print("ROWS=", ROWS, " COLS=", COLS)
+    print("Screen resolution:\n",
+          "rows =", ROWS, "\n",
+          "cols =", COLS, '\n',
+          'block size =', BLOCK_SIZE)
     edges = generate_edge_from_screen()
     graph = Graph(edges)
     visuals = Visuals(graph)

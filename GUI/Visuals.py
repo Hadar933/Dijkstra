@@ -70,17 +70,9 @@ class Visuals:
                     col = y // BLOCK_SIZE
                     if event.button == RIGHT_MOUSE_CLICK:  # right click - source and dest
                         if not self.is_src_button_init:
-                            source_block = Block(row, col, color=START_COLOR)
-                            source_block.draw(self.window, START_COLOR)
-                            self.source_node = self.graph.get_nodes()[(get_node_name(row, col))]
-                            self.is_src_button_init = True
-                            self.source_node.is_colored = True
+                            self.init_src_node(col, row)
                         elif not self.is_dest_button_init:
-                            dest_block = Block(row, col, color=END_COLOR)
-                            dest_block.draw(self.window, END_COLOR)
-                            self.dest_node = self.graph.get_nodes()[(get_node_name(row, col))]
-                            self.is_dest_button_init = True
-                            self.dest_node.is_colored = True
+                            self.init_dest_node(col, row)
                     elif event.button == LEFT_MOUSE_CLICK:  # left click - bad nodes
                         self.add_bad_nodes_with_mouse(x, y)
                         self.draw_nodes("bad")
@@ -90,6 +82,31 @@ class Visuals:
                     if event.key == pygame.K_RETURN:  # pressed enter - run algorithm
                         dijkstra(self.graph, self.source_node, self.window, self.dest_node)
             pygame.display.update()
+            self.clock.tick(FPS)
+
+    def init_dest_node(self, col, row):
+        """
+        initializes the destination node
+        :param col: column of node
+        :param row: row of node
+        """
+        dest_block = Block(row, col, color=END_COLOR)
+        dest_block.draw(self.window, END_COLOR)
+        self.dest_node = self.graph.get_nodes()[(get_node_name(row, col))]
+        self.is_dest_button_init = True
+        self.dest_node.is_colored = True
+
+    def init_src_node(self, col, row):
+        """
+        initializes the source node
+        :param col: column of node
+        :param row: row of node
+        """
+        source_block = Block(row, col, color=START_COLOR)
+        source_block.draw(self.window, START_COLOR)
+        self.source_node = self.graph.get_nodes()[(get_node_name(row, col))]
+        self.is_src_button_init = True
+        self.source_node.is_colored = True
 
     def add_bad_nodes_with_mouse(self, x, y):
         """

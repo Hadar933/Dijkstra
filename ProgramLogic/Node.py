@@ -15,8 +15,7 @@ class Node:
         self.name = name
         self.dist_from_source = dist_from_source
         self.prev = None
-        self.is_colored = False  # is the pixel that corresponds to the given node is colored already?
-        # (avoids blocking)
+        self.is_colored = False  # is the pixel that corresponds to the given node is colored already?(avoids blocking)
 
     def set_prev(self, prev):
         self.prev = prev
