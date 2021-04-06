@@ -63,9 +63,3 @@ under `Dijkstra.Main` execute `main()`
             if v_dist > u_dist + weight_u_v:
                 v.set_dist_from_source(u_dist + weight_u_v)
                 heapq.heappush(Q, v)  # O(logV)
--------------------------------------------------------------------------------
-  
-### Notes
-- there are a few bugs, that I havent fixed yet. some of which may cause the algorithm to fail, while other will crash the screen when clicking on some certain position.
-
-
